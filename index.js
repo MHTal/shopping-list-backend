@@ -1,15 +1,17 @@
 import { createRequire } from "https://deno.land/std/node/module.ts";
+
 const require = createRequire(import.meta.url);
+// Loads native module polyfill.
 const path = require("path");
-const mongoose = require("mongoose")
-const express = require("express")
+import mongoose from 'https://esm.sh/mongoose'
+import express from 'https://esm.sh/express'
 const List = require('./models/List.js')
 const e = express();
-const cors = require("cors")
+import cors from 'https://esm.sh/cors'
 e.use(cors())
 const http = require("http")
 const app = http.createServer(e);
-const { Server } = require("socket.io");
+import { Server } from 'https://esm.sh/socket.io'
 
 const io = new Server(app, {
     cors: {
