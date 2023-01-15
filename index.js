@@ -20,11 +20,11 @@ io.on('connection', socket => socket.emit('hello', { message: 'hello from server
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
-}).then(c => console.log(c.connections))
+})
 io.on('connection', socket => {
   console.log('user connected')
     socket.on("text-change", async data => {
-        await List.findOneAndUpdate({}, {list: data.userText, height: data.userHeight}) || List.create({list: data.userText, height: data.userHeight})
+        await List.findOneAndUpdate({}, {list: data.userText, height: data.userHeight, date: Date.now()}) || List.create({list: data.userText, height: data.userHeight, date: Date.now()})
         socket.broadcast.emit("receive-changes", data)
     })
     socket.on("get-list", async () => {

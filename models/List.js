@@ -8,6 +8,10 @@ const list = mongoose.Schema({
     height: {
         type: String,
         default: ''
+    },
+    date: {
+        type: Number,
+        default: Date.now()
     }
 })
 
