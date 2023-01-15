@@ -1,4 +1,7 @@
 require('dotenv').config()
+import { createRequire } from "https://deno.land/std/node/module.ts";
+const require = createRequire(import.meta.url);
+const path = require("path");
 const mongoose = require("mongoose")
 const express = require("express")
 const List = require('./models/List.js')
