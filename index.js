@@ -18,10 +18,9 @@ const io = new Server(app, {
 io.on('connection', socket => socket.emit('hello', { message: 'hello from server!' }));
 
 mongoose.connect(process.env.MONGO_URI, {
-    useFindAndModify: false,
     useNewUrlParser: true,
     useUnifiedTopology: true
-}, () => console.log("Connected to MongoDB!"))
+}, () => console.log("Connected to MongoDB!")).then(c => console.log(c.connections))
 io.on('connection', socket => {
   console.log('user connected')
     socket.on("text-change", async data => {
