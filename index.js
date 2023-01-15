@@ -11,7 +11,7 @@ const { Server } = require("socket.io");
 
 const io = new Server(app, {
     cors: {
-        origin: 'https://adams-shopping-list.vercel.app/'
+        origin: '*'
     }
 });
 
